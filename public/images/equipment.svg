@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Equipment placeholder — replace with a real photo">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1f25"/><stop offset="1" stop-color="#0b0d10"/></linearGradient>
+    <radialGradient id="g" cx=".8" cy=".2" r=".8"><stop offset="0" stop-color="#ff6a1a" stop-opacity=".25"/><stop offset="1" stop-color="#ff6a1a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#g)"/>
+  <!-- diagnostic screen -->
+  <rect x="140" y="150" width="520" height="340" rx="22" fill="#20262e" stroke="#3a424e" stroke-width="6"/>
+  <rect x="170" y="180" width="460" height="280" rx="10" fill="#0b0d10"/>
+  <path d="M190 350h80l30-80 50 160 40-110 30 50h190" fill="none" stroke="#ff6a1a" stroke-width="8" stroke-linejoin="round"/>
+  <g fill="#3a424e"><rect x="190" y="200" width="140" height="16" rx="8"/><rect x="190" y="228" width="90" height="16" rx="8"/></g>
+  <rect x="380" y="490" width="40" height="140" fill="#2a313b"/>
+  <rect x="300" y="620" width="200" height="24" rx="12" fill="#2a313b"/>
+  <!-- wheel on balancer -->
+  <circle cx="900" cy="420" r="190" fill="#0b0d10"/>
+  <circle cx="900" cy="420" r="120" fill="#3a424e"/>
+  <circle cx="900" cy="420" r="40" fill="#8d97a6"/>
+  <g stroke="#20262e" stroke-width="18"><path d="M900 310v70M900 460v70M790 420h70M940 420h70"/></g>
+  <rect x="760" y="600" width="280" height="80" rx="12" fill="#c2470a"/>
+</svg>

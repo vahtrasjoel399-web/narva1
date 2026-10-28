@@ -1,26 +1,204 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── Design tokens ─────────────────────────────────────────────────────────
+   Dark graphite base + one strong accent. Change --color-accent-* to rebrand
+   (e.g. electric blue: 500 #2f7bff, 400 #5a96ff, 600 #1d63e0).            */
+@theme {
+  --color-ink-950: #0b0d10;
+  --color-ink-900: #101317;
+  --color-ink-850: #14181d;
+  --color-ink-800: #1a1f25;
+  --color-ink-750: #20262e;
+  --color-ink-700: #2a313b;
+  --color-ink-600: #3a424e;
+  --color-ink-500: #5b6574;
+  --color-ink-400: #8d97a6;
+  --color-ink-300: #b3bbc7;
+  --color-ink-200: #d3d8df;
+  --color-ink-100: #eceef2;
+  --color-ink-50: #f7f8fa;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-accent-300: #ffb183;
+  --color-accent-400: #ff8a4c;
+  --color-accent-500: #ff6a1a;
+  --color-accent-600: #e85a0c;
+  --color-accent-700: #c2470a;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-ok-400: #4ade80;
+  --color-ok-500: #22c55e;
+  --color-bad-400: #f87171;
+  --color-bad-500: #ef4444;
+  --color-warn-400: #fbbf24;
+  --color-info-400: #60a5fa;
+  --color-info-500: #3b82f6;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade-in: fade-in 0.35s ease-out both;
+  --animate-pop: pop 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.3) both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.94); }
+    to { opacity: 1; transform: none; }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-ink-950);
+    color: var(--color-ink-100);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  :focus-visible {
+    outline: 2px solid var(--color-accent-400);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  ::selection { background: var(--color-accent-500); color: var(--color-ink-950); }
+  input, select, textarea, button { font: inherit; }
+  input[type="date"]::-webkit-calendar-picker-indicator,
+  input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.8); }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 76rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x { padding-inline: 2rem; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.875rem;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.2s ease;
+    user-select: none;
+  }
+  .btn:active { transform: translateY(1px) scale(0.99); }
+  .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
+  .btn-primary {
+    background: var(--color-accent-500);
+    color: var(--color-ink-950);
+    box-shadow: 0 8px 24px -10px color-mix(in oklab, var(--color-accent-500) 70%, transparent);
+  }
+  .btn-primary:hover:not(:disabled) { background: var(--color-accent-400); }
+  .btn-secondary {
+    background: var(--color-ink-800);
+    color: var(--color-ink-100);
+    border: 1px solid var(--color-ink-700);
+  }
+  .btn-secondary:hover:not(:disabled) { background: var(--color-ink-750); border-color: var(--color-ink-600); }
+  .btn-ghost { color: var(--color-ink-200); }
+  .btn-ghost:hover:not(:disabled) { background: var(--color-ink-800); }
+  .btn-danger { background: color-mix(in oklab, var(--color-bad-500) 18%, transparent); color: var(--color-bad-400); border: 1px solid color-mix(in oklab, var(--color-bad-500) 35%, transparent); }
+  .btn-danger:hover:not(:disabled) { background: color-mix(in oklab, var(--color-bad-500) 28%, transparent); }
+  .btn-ok { background: var(--color-ok-500); color: var(--color-ink-950); }
+  .btn-ok:hover:not(:disabled) { background: var(--color-ok-400); }
+  .btn-sm { min-height: 2.5rem; padding: 0.5rem 0.875rem; font-size: 0.9375rem; border-radius: 0.75rem; }
+  .btn-lg { min-height: 3.5rem; padding: 1rem 1.75rem; font-size: 1.0625rem; }
+
+  /* Cards */
+  .card {
+    background: var(--color-ink-850);
+    border: 1px solid var(--color-ink-700);
+    border-radius: var(--radius-card);
+  }
+  .card-hover { transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease; }
+  .card-hover:hover { border-color: var(--color-ink-600); transform: translateY(-2px); background: var(--color-ink-800); }
+
+  /* Form fields */
+  .field-label { display: block; font-size: 0.9375rem; font-weight: 600; color: var(--color-ink-200); margin-bottom: 0.4rem; }
+  .field-hint { font-size: 0.8125rem; color: var(--color-ink-400); margin-top: 0.35rem; }
+  .field-error { font-size: 0.8125rem; color: var(--color-bad-400); margin-top: 0.35rem; font-weight: 600; }
+  .input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 0.75rem;
+    background: var(--color-ink-900);
+    border: 1px solid var(--color-ink-700);
+    color: var(--color-ink-50);
+    font-size: 1rem; /* ≥16px avoids iOS zoom */
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .input::placeholder { color: var(--color-ink-500); }
+  .input:hover { border-color: var(--color-ink-600); }
+  .input:focus { outline: none; border-color: var(--color-accent-500); box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent-500) 25%, transparent); }
+  .input[aria-invalid="true"] { border-color: var(--color-bad-500); }
+  textarea.input { min-height: 7rem; resize: vertical; line-height: 1.5; }
+  select.input { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--color-ink-400) 50%), linear-gradient(135deg, var(--color-ink-400) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 2.25rem; }
+
+  .chip {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.25rem 0.6rem; border-radius: 999px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.01em;
+    border: 1px solid transparent;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--color-accent-400);
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, var(--color-ink-800) 0%, var(--color-ink-750) 50%, var(--color-ink-800) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s infinite linear;
+    border-radius: 0.75rem;
+  }
+  @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--color-ink-100) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--color-ink-100) 5%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

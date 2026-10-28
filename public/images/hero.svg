@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Workshop placeholder — replace with a real photo">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2027"/><stop offset="1" stop-color="#0e1115"/></linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#171b21"/><stop offset="1" stop-color="#0a0c0f"/></linearGradient>
+    <linearGradient id="car" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a424e"/><stop offset=".55" stop-color="#232930"/><stop offset="1" stop-color="#14181d"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b6574"/><stop offset="1" stop-color="#1a1f25"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy="0" r=".8"><stop offset="0" stop-color="#ff6a1a" stop-opacity=".35"/><stop offset="1" stop-color="#ff6a1a" stop-opacity="0"/></radialGradient>
+    <radialGradient id="spot" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffffff" stop-opacity=".10"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#wall)"/>
+  <!-- wall panels -->
+  <g stroke="#232930" stroke-width="2">
+    <path d="M0 140h1200M0 300h1200M0 460h1200"/>
+    <path d="M200 0v600M400 0v600M600 0v600M800 0v600M1000 0v600"/>
+  </g>
+  <!-- light strips -->
+  <rect x="140" y="40" width="380" height="14" rx="7" fill="#eceef2" opacity=".85"/>
+  <rect x="680" y="40" width="380" height="14" rx="7" fill="#eceef2" opacity=".85"/>
+  <rect width="1200" height="600" fill="url(#glow)"/>
+  <!-- tool wall -->
+  <g fill="none" stroke="#5b6574" stroke-width="6" stroke-linecap="round">
+    <path d="M90 200v120M120 200v90M150 200v140M180 200v100"/>
+    <circle cx="1060" cy="230" r="34"/><circle cx="1060" cy="230" r="12"/>
+    <path d="M980 330h140"/>
+  </g>
+  <rect x="60" y="360" width="160" height="240" rx="10" fill="#c2470a"/>
+  <g fill="#0b0d10" opacity=".55"><rect x="74" y="378" width="132" height="42" rx="5"/><rect x="74" y="430" width="132" height="42" rx="5"/><rect x="74" y="482" width="132" height="42" rx="5"/><rect x="74" y="534" width="132" height="52" rx="5"/></g>
+  <!-- floor -->
+  <rect y="600" width="1200" height="300" fill="url(#floor)"/>
+  <path d="M0 600h1200" stroke="#2a313b" stroke-width="3"/>
+  <ellipse cx="640" cy="700" rx="480" ry="60" fill="url(#spot)"/>
+  <!-- lift -->
+  <rect x="300" y="250" width="26" height="430" fill="#2a313b"/>
+  <rect x="960" y="250" width="26" height="430" fill="#2a313b"/>
+  <rect x="300" y="250" width="26" height="40" fill="#ff6a1a"/>
+  <rect x="960" y="250" width="26" height="40" fill="#ff6a1a"/>
+  <rect x="330" y="520" width="626" height="18" rx="4" fill="#3a424e"/>
+  <!-- car -->
+  <g>
+    <path d="M360 500c10-50 40-78 92-86l118-62c40-20 80-28 128-28h70c50 0 90 14 124 40l70 52c50 6 80 22 92 48l6 36H360z" fill="url(#car)"/>
+    <path d="M520 410l70-44c26-14 56-20 96-20h40c36 0 62 10 88 28l44 36z" fill="url(#glass)"/>
+    <path d="M700 346v64" stroke="#14181d" stroke-width="8"/>
+    <path d="M370 470h70M896 452h44" stroke="#ff8a4c" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="480" cy="505" r="62" fill="#0b0d10"/><circle cx="480" cy="505" r="34" fill="#3a424e"/><circle cx="480" cy="505" r="10" fill="#8d97a6"/>
+    <circle cx="840" cy="505" r="62" fill="#0b0d10"/><circle cx="840" cy="505" r="34" fill="#3a424e"/><circle cx="840" cy="505" r="10" fill="#8d97a6"/>
+  </g>
+  <!-- mechanic silhouette -->
+  <g fill="#0b0d10">
+    <circle cx="1090" cy="560" r="26"/>
+    <path d="M1052 600c4-14 20-22 38-22s34 8 38 22l10 110h-22l-6 160h-20l-6-120-6 120h-20l-6-160h-22z"/>
+  </g>
+</svg>
