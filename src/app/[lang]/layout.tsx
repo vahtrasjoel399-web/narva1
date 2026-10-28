@@ -26,6 +26,7 @@ export async function generateStaticParams() {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl()),
+  title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
   applicationName: siteConfig.name,
   formatDetection: { telephone: false },
 };

@@ -54,8 +54,9 @@ export function pageMetadata(lang: Lang, page: PageKey, opts: { noindex?: boolea
       locale: ogLocales[lang],
       alternateLocale: locales.filter((l) => l !== lang).map((l) => ogLocales[l]),
       url: path !== null ? `/${lang}${path}` : undefined,
+      images: [{ url: `/${lang}/opengraph-image`, width: 1200, height: 630, alt: siteConfig.name }],
     },
-    twitter: { card: "summary_large_image" },
+    twitter: { card: "summary_large_image", images: [`/${lang}/opengraph-image`] },
     robots: opts.noindex ? { index: false, follow: false } : undefined,
   };
 }
