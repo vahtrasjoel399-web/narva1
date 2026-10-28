@@ -30,8 +30,8 @@ export function PageHeader({ title, subtitle }: { title: string; subtitle?: stri
     <div className="relative overflow-hidden border-b border-ink-800">
       <div className="grid-bg absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden="true" />
       <div className="container-x relative py-14 md:py-20">
-        <h1 className="max-w-3xl text-4xl font-extrabold text-white animate-fade-up md:text-5xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-2xl text-lg text-ink-300 animate-fade-up [animation-delay:80ms]">{subtitle}</p>}
+        <h1 className="max-w-3xl text-4xl font-extrabold text-white md:text-5xl">{title}</h1>
+        {subtitle && <p className="mt-4 max-w-2xl text-lg text-ink-300">{subtitle}</p>}
       </div>
     </div>
   );

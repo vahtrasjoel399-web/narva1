@@ -52,10 +52,10 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
             <p className="eyebrow animate-fade-up">
               <MapPin size={15} aria-hidden="true" /> {t(h.eyebrow, { cityIn: c.address.cityIn[lang] })}
             </p>
-            <h1 className="mt-4 text-[2.6rem] font-extrabold leading-[1.05] text-white animate-fade-up [animation-delay:60ms] sm:text-6xl">
+            <h1 className="mt-4 text-[2.6rem] font-extrabold leading-[1.05] text-white sm:text-6xl">
               {h.title}
             </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-300 animate-fade-up [animation-delay:120ms] md:text-xl">
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-300 md:text-xl">
               {h.subtitle}
             </p>
             <div className="mt-8 flex flex-col gap-3 animate-fade-up [animation-delay:180ms] sm:flex-row">

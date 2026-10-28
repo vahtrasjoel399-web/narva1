@@ -11,7 +11,7 @@
   --color-ink-750: #20262e;
   --color-ink-700: #2a313b;
   --color-ink-600: #3a424e;
-  --color-ink-500: #5b6574;
+  --color-ink-500: #7a8494;
   --color-ink-400: #8d97a6;
   --color-ink-300: #b3bbc7;
   --color-ink-200: #d3d8df;
@@ -33,7 +33,7 @@
   --color-info-500: #3b82f6;
 
   --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 
   --radius-card: 1.25rem;
 

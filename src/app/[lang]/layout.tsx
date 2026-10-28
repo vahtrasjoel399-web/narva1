@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { Inter, Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../globals.css";
 import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/i18n";
@@ -13,12 +13,6 @@ import { StickyBookBar } from "@/components/site/StickyBookBar";
 import { CookieConsent } from "@/components/site/CookieConsent";
 
 const body = Inter({ subsets: ["latin", "latin-ext", "cyrillic"], variable: "--font-body", display: "swap" });
-const heading = Manrope({
-  subsets: ["latin", "latin-ext", "cyrillic"],
-  weight: ["700", "800"],
-  variable: "--font-heading",
-  display: "swap",
-});
 
 export async function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -42,7 +36,7 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   const dict = getDictionary(lang);
 
   return (
-    <html lang={localeTags[lang]} className={`${body.variable} ${heading.variable}`} data-scroll-behavior="smooth">
+    <html lang={localeTags[lang]} className={body.variable} data-scroll-behavior="smooth">
       <body className="flex min-h-dvh flex-col antialiased">
         <a
           href="#main"
