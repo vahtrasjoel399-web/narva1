@@ -25,9 +25,9 @@ export function Header({ lang, dict }: { lang: Lang; dict: Dictionary }) {
   return (
     <header className="sticky top-0 z-40 border-b border-ink-800/80 bg-ink-950/85 backdrop-blur-md">
       <div className="container-x flex h-16 items-center gap-3">
-        <Link href={`/${lang}`} className="flex items-center gap-2.5 font-display text-lg font-extrabold tracking-tight text-white">
-          <LogoMark />
-          <span>{siteConfig.name}</span>
+        <Link href={`/${lang}`} className="flex min-w-0 items-center gap-2 font-display text-base font-extrabold tracking-tight text-white sm:gap-2.5 sm:text-lg">
+          <LogoMark className="shrink-0" />
+          <span className="truncate whitespace-nowrap">{siteConfig.name}</span>
         </Link>
 
         <nav aria-label={dict.nav.mainNav} className="ml-6 hidden md:block">
@@ -36,7 +36,7 @@ export function Header({ lang, dict }: { lang: Lang; dict: Dictionary }) {
           </Suspense>
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-1.5 sm:gap-2">
           <a
             href={phoneHref}
             className="hidden items-center gap-2 rounded-lg px-3 py-2 text-[0.9375rem] font-semibold text-ink-200 hover:text-white lg:flex"
