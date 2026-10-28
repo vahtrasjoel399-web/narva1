@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif), Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #3b1530 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, #2a0f2e 0%, transparent 55%),
+    #120914;
+  background-attachment: fixed;
+  color: #fde7ef;
+  font-family: var(--font-sans);
+}
+
+.star {
+  position: absolute;
+  border-radius: 9999px;
+  background: #ffe4ef;
+  opacity: 0.2;
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.9; }
+}
+
+.heart {
+  position: absolute;
+  bottom: -40px;
+  color: #fb7185;
+  opacity: 0;
+  animation-name: float-up;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.35; }
+  90% { opacity: 0.25; }
+  100% { transform: translateY(-115vh) rotate(25deg); opacity: 0; }
+}
+
+.glow {
+  text-shadow: 0 0 30px rgba(251, 113, 133, 0.55), 0 0 80px rgba(251, 113, 133, 0.25);
+}
+
+.scroll-hint {
+  animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+.tg-btn {
+  background: linear-gradient(135deg, #f43f5e, #ec4899 50%, #229ed9);
+  box-shadow: 0 10px 40px -10px rgba(244, 63, 94, 0.7);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+.tg-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 14px 50px -8px rgba(244, 63, 94, 0.9);
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 10px 40px -10px rgba(244, 63, 94, 0.7); }
+  50% { box-shadow: 0 10px 60px -6px rgba(236, 72, 153, 0.95); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heart, .star, .tg-btn, .scroll-hint { animation: none; }
+  html { scroll-behavior: auto; }
 }
