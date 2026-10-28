@@ -169,6 +169,10 @@ const et: AdminDictionary = {
       saveNotes: "Salvesta märge",
       manageLink: "Kliendi link",
       clientEmailed: "Kliendile saadeti e-kiri.",
+      make: "Mark",
+      model: "Mudel",
+      year: "Aasta",
+      sendEmail: "Saada kliendile kinnitus e-postiga",
     },
     manual: {
       title: "Lisa broneering (telefoni teel)",

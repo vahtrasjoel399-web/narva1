@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit",
     "db:seed": "tsx scripts/generate-seed.ts",
     "test:db": "scripts/test/local-db.sh start",
-    "test:sql": "node --test tests/sql/",
+    "test:sql": "node --test tests/sql/*.test.mjs",
     "test:e2e": "scripts/test/run-e2e.sh"
   },
   "dependencies": {

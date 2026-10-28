@@ -28,33 +28,35 @@ export function formatPrice(amount: number, lang: Lang): string {
   }).format(amount);
 }
 
+export const capFirst = (s: string) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
+
 /** "Thu 30 Oct" style. */
 export function formatDateShort(date: ISODate, lang: Lang): string {
-  return new Intl.DateTimeFormat(localeTags[lang], {
+  return capFirst(new Intl.DateTimeFormat(localeTags[lang], {
     weekday: "short",
     day: "numeric",
     month: "short",
     timeZone: "UTC",
-  }).format(dateForFormat(date));
+  }).format(dateForFormat(date)));
 }
 
 /** "Thursday, 30 October 2026" style. */
 export function formatDateLong(date: ISODate, lang: Lang): string {
-  return new Intl.DateTimeFormat(localeTags[lang], {
+  return capFirst(new Intl.DateTimeFormat(localeTags[lang], {
     weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
     timeZone: "UTC",
-  }).format(dateForFormat(date));
+  }).format(dateForFormat(date)));
 }
 
 export function formatMonth(date: ISODate, lang: Lang): string {
-  return new Intl.DateTimeFormat(localeTags[lang], {
+  return capFirst(new Intl.DateTimeFormat(localeTags[lang], {
     month: "long",
     year: "numeric",
     timeZone: "UTC",
-  }).format(dateForFormat(date));
+  }).format(dateForFormat(date)));
 }
 
 export function formatPhoneHref(phone: string): string {

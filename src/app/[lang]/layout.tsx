@@ -41,7 +41,7 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   const dict = getDictionary(lang);
 
   return (
-    <html lang={localeTags[lang]} className={`${body.variable} ${heading.variable}`}>
+    <html lang={localeTags[lang]} className={`${body.variable} ${heading.variable}`} data-scroll-behavior="smooth">
       <body className="flex min-h-dvh flex-col antialiased">
         <a
           href="#main"

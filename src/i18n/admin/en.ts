@@ -169,6 +169,10 @@ const en: AdminDictionary = {
       saveNotes: "Save note",
       manageLink: "Client link",
       clientEmailed: "Client was emailed.",
+      make: "Make",
+      model: "Model",
+      year: "Year",
+      sendEmail: "Email a confirmation to the client",
     },
     manual: {
       title: "Add booking (phone call)",

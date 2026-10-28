@@ -423,6 +423,27 @@ begin
   return jsonb_build_object('ok', true, 'action', v_token.action, 'booking', to_jsonb(v_booking));
 end $$;
 
+-- Admin: create many slots at once. Slots that would overlap an existing slot
+-- in the same bay are skipped. p_slots: [{date, start_time, end_time, bay}]
+create or replace function public.admin_create_slots(p_slots jsonb) returns jsonb
+language plpgsql security definer set search_path = public as $$
+declare
+  v_item    jsonb;
+  v_created int := 0;
+  v_skipped int := 0;
+  v_rows    int;
+begin
+  for v_item in select * from jsonb_array_elements(p_slots) loop
+    insert into public.slots (date, start_time, end_time, bay)
+    values ((v_item ->> 'date')::date, (v_item ->> 'start_time')::time, (v_item ->> 'end_time')::time,
+            coalesce((v_item ->> 'bay')::smallint, 1))
+    on conflict do nothing;
+    get diagnostics v_rows = row_count;
+    if v_rows > 0 then v_created := v_created + 1; else v_skipped := v_skipped + 1; end if;
+  end loop;
+  return jsonb_build_object('created', v_created, 'skipped', v_skipped);
+end $$;
+
 -- Fixed-window rate limiter. Returns true when the call is allowed.
 create or replace function public.hit_rate_limit(p_key text, p_limit int, p_window_seconds int)
 returns boolean
@@ -502,6 +523,7 @@ revoke execute on function public.create_action_tokens(uuid, text, text, int) fr
 revoke execute on function public.get_action_token(text) from public, anon, authenticated;
 revoke execute on function public.use_action_token(text) from public, anon, authenticated;
 revoke execute on function public.hit_rate_limit(text, int, int) from public, anon, authenticated;
+revoke execute on function public.admin_create_slots(jsonb) from public, anon, authenticated;
 revoke execute on function public._lock_slot_chain(date, time, int) from public, anon, authenticated;
 revoke execute on function public._release_slots(uuid) from public, anon, authenticated;
 
@@ -512,6 +534,7 @@ grant execute on function public.create_action_tokens(uuid, text, text, int) to 
 grant execute on function public.get_action_token(text) to service_role;
 grant execute on function public.use_action_token(text) to service_role;
 grant execute on function public.hit_rate_limit(text, int, int) to service_role;
+grant execute on function public.admin_create_slots(jsonb) to service_role;
 grant execute on function public._lock_slot_chain(date, time, int) to service_role;
 grant execute on function public._release_slots(uuid) to service_role;
 

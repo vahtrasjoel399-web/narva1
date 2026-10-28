@@ -136,7 +136,7 @@ function condition(column, expr, params) {
   }
   const dot = expr.indexOf(".");
   const op = expr.slice(0, dot);
-  const value = expr.slice(dot + 1);
+  const value = expr.slice(dot + 1).replace(/^"(.*)"$/, "$1");
   let sql;
   if (op === "is") {
     const v = value.toLowerCase();
@@ -245,7 +245,7 @@ async function handleRest(req, res, url) {
     const args = (await readBody(req)) || {};
     const params = [];
     const named = Object.entries(args).map(([k, v]) => {
-      params.push(v !== null && typeof v === "object" && !Array.isArray(v) ? JSON.stringify(v) : v);
+      params.push(v !== null && typeof v === "object" && (!Array.isArray(v) || v.some((x) => x && typeof x === "object")) ? JSON.stringify(v) : v);
       return `${ident(k)} => $${params.length}`;
     });
     const rows = await withRole(claims, (c) =>

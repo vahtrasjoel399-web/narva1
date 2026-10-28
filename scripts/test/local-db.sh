@@ -34,6 +34,7 @@ case "${1:-start}" in
     $PSQL -d $DB -f "$ROOT/supabase/tests/local-bootstrap.sql"
     for f in "$ROOT"/supabase/migrations/*.sql; do $PSQL -d $DB -f "$f"; done
     $PSQL -d $DB -f "$ROOT/supabase/seed.sql"
+    $PSQL -d $DB -f "$ROOT/supabase/tests/test-users.sql"
     echo "postgres://postgres@127.0.0.1:$PORT/$DB"
     ;;
 esac
