@@ -13,7 +13,7 @@ export function StatusBadge({ status, t }: { status: string; t: AdminDictionary 
 }
 
 export function NewBadge({ label }: { label: string }) {
-  return <span className="inline-flex animate-pulse-ring items-center rounded-sm bg-accent px-1.5 py-0.5 text-[0.6875rem] font-bold uppercase tracking-wide text-on-accent">{label}</span>;
+  return <span className="inline-flex animate-pulse-ring items-center rounded-sm bg-accent px-1.5 py-0.5 text-xs font-bold uppercase tracking-wide text-on-accent">{label}</span>;
 }
 
 export const telHref = (p: string) => `tel:${p.replace(/[^\d+]/g, "")}`;

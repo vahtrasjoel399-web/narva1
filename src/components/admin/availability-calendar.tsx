@@ -174,7 +174,7 @@ export function AvailabilityCalendar({ view, anchor, from, to, today, sel, slots
                     className={`flex min-h-16 flex-col rounded-sm border p-1.5 transition-colors md:min-h-20 ${d === sel ? "border-accent" : "border-line hover:border-line-strong"} ${inMonth(d) ? "" : "opacity-40"} ${past ? "opacity-50" : ""}`}
                   >
                     <span className={`font-mono text-sm ${d === today ? "font-semibold text-accent" : ""}`}>{Number(d.slice(8))}</span>
-                    <span className="mt-auto flex flex-wrap gap-x-1.5 font-mono text-[0.6875rem] leading-tight md:text-xs">
+                    <span className="mt-auto flex flex-wrap gap-x-1.5 font-mono text-xs leading-tight md:text-xs">
                       {c.free > 0 && <span className="text-ok">{c.free}</span>}
                       {c.booked > 0 && <span className="text-accent">{c.booked}</span>}
                       {c.blocked > 0 && <span className="text-faint">{c.blocked}</span>}
@@ -200,7 +200,7 @@ export function AvailabilityCalendar({ view, anchor, from, to, today, sel, slots
                             {s.bookingId ? (
                               <Link href={`/admin/bookings/${s.bookingId}`} title={s.bookingLabel ?? ""} className={`block rounded-sm border px-1.5 py-1 font-mono text-xs ${statusStyle.booked}`}>
                                 {s.start}
-                                <span className="hidden truncate text-[0.6875rem] md:block">{s.bookingLabel}</span>
+                                <span className="hidden truncate text-xs md:block">{s.bookingLabel}</span>
                               </Link>
                             ) : (
                               <Link href={url({ sel: d })} scroll={false} className={`block rounded-sm border px-1.5 py-1 font-mono text-xs ${statusStyle[s.status]}`}>

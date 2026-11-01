@@ -14,12 +14,12 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
   ];
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-ink/90 backdrop-blur-md supports-[backdrop-filter]:bg-ink/75">
-      <div className="container-x flex h-16 items-center gap-4">
-        <Link href={href(lang)} className="mr-auto flex min-h-11 items-center gap-2.5 font-bold tracking-tight lg:mr-6">
-          <span aria-hidden="true" className="grid size-8 place-items-center rounded-sm bg-accent text-on-accent">
+      <div className="container-x flex h-16 items-center gap-2 sm:gap-4">
+        <Link href={href(lang)} className="mr-auto flex min-h-11 min-w-0 items-center gap-2.5 font-bold tracking-tight lg:mr-6">
+          <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-sm bg-accent text-on-accent">
             <Icon name="wrench" size={18} strokeWidth={2} />
           </span>
-          <span className="max-w-[11rem] truncate text-[1.0625rem] sm:max-w-none">{siteConfig.name}</span>
+          <span className="min-w-0 truncate text-[1.0625rem]">{siteConfig.name}</span>
         </Link>
 
         <nav aria-label={dict.nav.menu} className="hidden lg:mr-auto lg:flex lg:gap-1">
@@ -40,7 +40,7 @@ export function Header({ lang, dict }: { lang: Locale; dict: Dictionary }) {
           </Link>
         </div>
 
-        <div className="flex items-center gap-1 lg:hidden">
+        <div className="flex shrink-0 items-center lg:hidden">
           <LangSwitcher current={lang} label={dict.nav.language} />
           <MobileMenu
             items={[{ href: href(lang), label: dict.nav.home }, ...items, { href: href(lang, "/booking"), label: dict.nav.book }]}

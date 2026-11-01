@@ -22,7 +22,7 @@ export function LangSwitcher({ current, label }: { current: Locale; label: strin
           onClick={() => {
             document.cookie = `lang=${l}; path=/; max-age=31536000; samesite=lax`;
           }}
-          className={`inline-flex min-h-11 min-w-11 items-center justify-center font-mono text-sm transition-colors ${
+          className={`inline-flex min-h-11 min-w-10 items-center justify-center font-mono text-sm transition-colors ${
             l === current ? "text-fg underline decoration-accent decoration-2 underline-offset-[6px]" : "text-faint hover:text-fg"
           }`}
         >

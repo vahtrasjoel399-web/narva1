@@ -70,13 +70,13 @@ export function AdminNav({ t, counts, lang, shopName }: { t: AdminDictionary; co
       {/* Phone: bottom tab bar */}
       <nav className="fixed inset-x-0 bottom-0 z-40 grid grid-cols-5 border-t border-line bg-panel pb-[env(safe-area-inset-bottom)] lg:hidden">
         {items.slice(0, 4).map((i) => (
-          <Link key={i.href} href={i.href} aria-current={active(i.href) ? "page" : undefined} className="relative flex min-h-16 flex-col items-center justify-center gap-1 text-[0.6875rem] text-faint aria-[current=page]:text-accent">
+          <Link key={i.href} href={i.href} aria-current={active(i.href) ? "page" : undefined} className="relative flex min-h-16 flex-col items-center justify-center gap-1 text-xs text-faint aria-[current=page]:text-accent">
             <Icon name={i.icon} size={22} />
             <span className="max-w-full truncate px-1">{i.label}</span>
-            {i.badge > 0 && <span className="absolute top-2 left-1/2 ml-2 grid min-w-4.5 place-items-center rounded-full bg-accent px-1 font-mono text-[0.625rem] leading-4.5 text-on-accent">{i.badge}</span>}
+            {i.badge > 0 && <span className="absolute top-2 left-1/2 ml-2 grid min-w-4.5 place-items-center rounded-full bg-accent px-1 font-mono text-xs leading-4.5 text-on-accent">{i.badge}</span>}
           </Link>
         ))}
-        <button type="button" onClick={() => setMore((v) => !v)} aria-expanded={more} className="relative flex min-h-16 flex-col items-center justify-center gap-1 text-[0.6875rem] text-faint">
+        <button type="button" onClick={() => setMore((v) => !v)} aria-expanded={more} className="relative flex min-h-16 flex-col items-center justify-center gap-1 text-xs text-faint">
           <Icon name="menu" size={22} />
           {t.nav.more}
           {counts.failed > 0 && <span className="absolute top-2.5 left-1/2 ml-2 size-2.5 rounded-full bg-danger" />}
