@@ -30,6 +30,12 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
     description: dict.meta.homeDescription,
     applicationName: siteConfig.name,
     formatDetection: { telephone: true },
+    // Search engine ownership codes (Google Search Console, Yandex Webmaster, Bing). Set in Vercel env vars.
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+      yandex: process.env.YANDEX_VERIFICATION || undefined,
+      other: process.env.BING_VERIFICATION ? { "msvalidate.01": process.env.BING_VERIFICATION } : undefined,
+    },
   };
 }
 
