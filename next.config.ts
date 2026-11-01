@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
     globalNotFound: true,
   },
   poweredByHeader: false,
+  // Tailwind v4 runs through this loader. Without it no utility classes are generated.
+  turbopack: {
+    rules: {
+      "*.css": {
+        loaders: ["@tailwindcss/turbopack"],
+        as: "*.css",
+      },
+    },
+  },
   async headers() {
     return [
       {
